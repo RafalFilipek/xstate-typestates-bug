@@ -56,15 +56,15 @@ userService.subscribe(state => {
   // just checking - user can be undefined - OK
   state.context.user.name;
 
-  if (state.matches("success")) {
+  if (state.matches<any>("success")) {
     // from the UserState typestate, `user` will be defined
     // :( still, use can be undefined
     state.context.user.name;
   }
 
-  if (state.matches("failure")) {
+  if (state.matches<any>("failure")) {
     // error is string | undefined :(
-    state.context.error;
+    state.context.error[0];
   }
 });
 
@@ -73,7 +73,7 @@ function App() {
 
   return (
     <div className="App">
-      {state.matches("success") && (
+      {state.matches<any>("success") && (
         <strong>
           {/* same problem :( */}
           {state.context.user.name}
